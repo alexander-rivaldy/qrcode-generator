@@ -1,10 +1,33 @@
 .App {
   text-align: center;
+  font-family: monospace;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+input {
+  height: 30px;
+  width: 60%;
+  font-size: 20px;
+  background-color: #cbcbcb;
+  border: 2px;
+  border-color: #cbcbcb;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 40px;
+}
+
+.error-message {
+  color: red;
+}
+
+button {
+  font-size: 30px;
+  padding: 20px;
+  background-color: #cbcbcb;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -22,6 +45,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .App-link {
