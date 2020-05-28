@@ -9,12 +9,8 @@ const App: React.FunctionComponent = () => {
   const [qrcodeValue, setQrcodeValue] = useState('');
   const [qrcodeImage, setQrcodeImage] = useState('');
 
-  const generateQRCode = async (text: string) => {
-    const url = await QRCode.toDataURL(text, { margin: 1, scale: 10 });
-    console.log(text);
-    console.log(url);
-    return url;
-  };
+  const generateQRCode = async (text: string) =>
+    await QRCode.toDataURL(text, { margin: 1, scale: 10 });
 
   return (
     <div className="App">
@@ -30,13 +26,9 @@ const App: React.FunctionComponent = () => {
           ></input>
 
           <button
-            onClick={async (e: any) => {
-              const qrcodeValueElement: any = document.getElementById(
-                'qrcodeValue'
-              );
-              const value: string = qrcodeValueElement.value;
-              if (value) {
-                setQrcodeImage(await generateQRCode(qrcodeValueElement.value));
+            onClick={async () => {
+              if (qrcodeValue) {
+                setQrcodeImage(await generateQRCode(qrcodeValue));
                 setError(false);
               } else {
                 setError(true);
