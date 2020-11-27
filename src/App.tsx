@@ -6,11 +6,16 @@ import './App.css';
 
 const App: React.FunctionComponent = () => {
   const [error, setError] = useState(false);
+  const [qrcodeColor, setQrcodeColor] = useState('');
   const [qrcodeValue, setQrcodeValue] = useState('');
   const [qrcodeImage, setQrcodeImage] = useState('');
 
   const generateQRCode = async (text: string) =>
-    await QRCode.toDataURL(text, { margin: 1, scale: 10 });
+    await QRCode.toDataURL(text, {
+      margin: 1,
+      scale: 10,
+      color: { dark: qrcodeColor },
+    });
 
   return (
     <div className="App">
@@ -18,12 +23,20 @@ const App: React.FunctionComponent = () => {
         <div className="input-container">
           {error && <p className="error-message">Put in a value!!!</p>}
           <label>Enter the website url (or any text at all!) here:</label>
-          <input
-            type="text"
-            id="qrcodeValue"
-            value={qrcodeValue}
-            onChange={(e) => setQrcodeValue(e.target.value)}
-          ></input>
+          <div className="input-fields-container">
+            <input
+              type="text"
+              id="qrcodeValue"
+              value={qrcodeValue}
+              onChange={(e) => setQrcodeValue(e.target.value)}
+            />
+            <input
+              type="color"
+              id="qrcodeColor"
+              value={qrcodeColor}
+              onChange={(e) => setQrcodeColor(e.target.value)}
+            />
+          </div>
 
           <button
             onClick={async () => {

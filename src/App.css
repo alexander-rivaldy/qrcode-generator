@@ -8,7 +8,13 @@
   pointer-events: none;
 }
 
-input {
+.input-fields-container {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+input#qrcodeValue {
   height: 30px;
   width: 60%;
   font-size: 20px;
@@ -18,6 +24,11 @@ input {
   border-radius: 10px;
   padding: 18px;
   margin: 40px;
+}
+
+input#qrcodeColor {
+  height: 50px;
+  width: 50px;
 }
 
 .error-message {
